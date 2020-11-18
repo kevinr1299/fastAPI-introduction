@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  web:
+    build: .
+    ports:
+      - 8000:8000
+    env_file: .env
+    environment:
+      DB_HOST: db
+      DB_PORT: 5433
+    volumes:
+      - .:/usr/src/app
+    command: uvicorn main:app --reload
+  db:
+    image: postgres
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
