@@ -13,3 +13,4 @@ To install the project do the following steps:
 ## Other commands
 
 * To apply migrations run `docker-compose run web alembic upgrade head`
+* To run on local without docker run first `pip install -e .` and later `alembic upgrade head`
